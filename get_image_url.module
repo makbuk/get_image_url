@@ -1,0 +1,17 @@
+<?php
+
+function testmodule_form_article_node_form_alter(&$form, &$form_state, $form_id) {
+	$form['field_image']['#element_validate'][] = 'my_function';
+}
+
+function my_function($element, &$form, &$form_state){
+		$lang = $element['#language'];
+		foreach (element_children($element[$lang]) as $key) {
+    			$fid = $element[$lang][$key]['#value']['fid'];
+				if ($fid > 0) {
+					$file = file_load($fid);
+					$url = file_create_url($file->uri);
+					dpm($url);
+				}
+		}
+}

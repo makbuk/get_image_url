@@ -1,0 +1,5 @@
+name = Get image url
+description = Module displays the URL address of of uploaded files
+core = 7.x
+
+version = "7.x-0.1"
